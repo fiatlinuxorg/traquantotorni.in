@@ -41,5 +41,4 @@
             <p class="text-xs md:text-sm">{{ $trip->end_location }} <br> {{ $trip->end_date->format('M d, Y') }} alle {{ $trip->end_date->format('H:i') }}</p>
         </div>
     </div>
-    </div>
 </div>
