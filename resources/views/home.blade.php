@@ -1,6 +1,6 @@
 <x-app-layout>
-    <div class="flex bg-light">
-        <div class="sidebar w-1/6 h-screen flex flex-col gap-4 p-4">
+    <div class="flex flex-col md:flex-row bg-light">
+        <div class="sidebar w-full md:w-1/6 md:h-screen flex flex-col gap-4 p-4">
             <div class="flex">
                 <h1 class="text-2xl">{{ auth()->user()->name }}</h1>
                 <button class="ml-auto bg-primary text-white p-2 rounded">
@@ -11,7 +11,7 @@
             </div>
             <hr class="border-gray">
         </div>
-        <div class="content w-5/6 h-screen bg-secondary flex flex-col gap-2 p-4 bg-white rounded-xl overflow-scroll">
+        <div class="content w-full md:w-5/6 h-screen bg-secondary flex flex-col gap-2 p-4 bg-white rounded-xl overflow-scroll">
             <form action="/search" method="get">
                 <x-text-input name="search" label="Cerca" type="text"/>
             </form>
@@ -20,20 +20,20 @@
             @endforeach
         </div>
     </div>
-    <div id="createTripModal" class="modal hidden fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center bg-gray">
-        <div class="modal-content bg-white w-1/2 p-4 rounded-xl shadow-sm">
+    <div id="createTripModal" class="modal hidden fixed inset-0 bg-gray-500 bg-opacity-75 flex justify-center bg-gray overflow-y-scroll">
+        <div class="modal-content bg-white w-full md:w-1/2 p-4 h-full rounded-xl shadow-sm">
             <h2 class="text-2xl mb-4">Nuovo viaggio</h2>
             <form action="/trips" method="post">
                 @csrf
                 <div class="mb-4">
                     <x-text-input name="title" label="Titolo" type="text" required/>
                 </div>
-                <div class="flex mb-4 justify-between">
+                <div class="flex flex-col md:flex-row mb-2 md:mb-4 justify-between">
                     <x-text-input name="vehicle" label="Veicolo" type="text" required/>
                     <x-text-input name="start_location" label="Partenza" type="text" required/>
                     <x-text-input name="end_location" label="Arrivo" type="text" required/> 
                 </div>
-                <div class="flex mb-4 justify-between items-center">
+                <div class="flex flex-col md:flex mb-2 md:mb-4 justify-between gap-4">
                     <x-text-input name="emoji" label="Emoji" type="text" required/>
                     <x-text-input name="start_date" label="Data partenza" type="datetime-local" required />
                     <x-text-input name="end_date" label="Data arrivo" type="datetime-local" required />

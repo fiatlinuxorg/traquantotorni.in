@@ -2,12 +2,12 @@
     <div class="flex">
         <div class="flex w-full">
             <div class="flex flex-col">
-                <h2 class="text-xl">{{ $trip->user->name }}</h2>
-                <p>{{ $trip->created_at->diffForHumans() }}</p>
+                <h2 class="text-sm md:text-xl">{{ $trip->user->name }}</h2>
+                <p class="text-xs md:text-sm">{{ $trip->created_at->diffForHumans() }}</p>
             </div>
             <div class="border-l border-gray h-full mx-4"></div>
             <div class="flex flex-col items-center justify-center">
-                <h2 class="text-xl text-dark">{{ $trip->title }}</h2>
+                <h2 class="text-sm md:text-xl text-dark">{{ $trip->title }}</h2>
             </div>
         </div>
         @if ($trip->user->id == auth()->id())
@@ -15,7 +15,7 @@
                 <form action="{{ route('trips.destroy', $trip->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="bg-primary text-white font-bold py-2 px-4 rounded">
+                    <button type="submit" class="bg-primary text-white font-bold py-1 px-2 rounded text-sm">
                         Elimina
                     </button>
                 </form>
@@ -37,8 +37,9 @@
             </div>
         </div>
         <div class="flex justify-between">
-            <p>{{ $trip->start_location }} - Partenza il {{ $trip->start_date->format('M d, Y') }} alle {{ $trip->start_date->format('H:i') }}</p>
-            <p>{{ $trip->end_location }} - Arrivo il {{ $trip->end_date->format('M d, Y') }} alle {{ $trip->end_date->format('H:i') }}</p>
+            <p class="text-xs md:text-sm">{{ $trip->start_location }} <br> {{ $trip->start_date->format('M d, Y') }} alle {{ $trip->start_date->format('H:i') }}</p>
+            <p class="text-xs md:text-sm">{{ $trip->end_location }} <br> {{ $trip->end_date->format('M d, Y') }} alle {{ $trip->end_date->format('H:i') }}</p>
         </div>
+    </div>
     </div>
 </div>
